@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SidebarComponent } from '../../../layouts/sidebar/sidebar.component';
 import { RouterOutlet } from '@angular/router';
+import { ILinkType } from '../../../../../lib/types/linkType';
 
 @Component({
   selector: 'app-client-layout',
@@ -10,5 +11,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './client-layout.component.scss',
 })
 export class ClientLayoutComponent {
-  links: string[] = ['Rendez-vous', 'Historique', 'Préférences', 'Rappel'];
+  links: ILinkType[] = [
+    { label: 'Rendez-vous', href: 'appointement' },
+    { label: 'Historique', href: 'history' },
+    { label: 'Préférences', href: 'preferences' },
+    { label: 'Rappel', href: '#' },
+  ];
 }

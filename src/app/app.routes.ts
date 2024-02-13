@@ -5,5 +5,13 @@ import { ClientLayoutComponent } from './main/pages/client/client-layout/client-
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
-  { path: 'client', component: ClientLayoutComponent },
+  {
+    path: 'client',
+    component: ClientLayoutComponent,
+    children: [
+      { path: 'appointement', component: LoginComponent },
+      { path: 'history', component: LoginComponent },
+      { path: 'preferences', component: LoginComponent },
+    ],
+  },
 ];

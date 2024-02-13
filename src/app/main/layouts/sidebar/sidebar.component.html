@@ -2,7 +2,9 @@
   <div class="sidebar-title"><span class="title">NgBeauty</span></div>
   <div class="sidebar-menu">
     <div class="items">
-      <a *ngFor="let link of links" class="menu-item">{{ link }}</a>
+      <a [routerLink]="link.href" *ngFor="let link of links" class="menu-item">{{
+        link.label
+      }}</a>
     </div>
   </div>
 </div>
