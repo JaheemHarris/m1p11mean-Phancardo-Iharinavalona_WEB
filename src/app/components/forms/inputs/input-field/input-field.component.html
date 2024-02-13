@@ -1,0 +1,14 @@
+<div [ngClass]="'input-container'">
+  <label class="input-label">{{ label }}</label>
+  <input
+    [ngClass]="{ 'input-field': true, error: error }"
+    [type]="type"
+    [name]="name"
+    [placeholder]="placeholder"
+  />
+  @if(error) {
+  <span class="input-error">{{ errorText }}</span>
+  } @else if(help) {
+  <span class="input-help">{{ helpText }}</span>
+  }
+</div>

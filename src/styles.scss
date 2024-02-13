@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  // Neutral Colors
+  --neutral-00: #ffffff;
+  --neutral-50: #eaeaea;
+
+  // Primary Colors
+  --primary-100: #1a3a59;
+
+  // Secondary Colors
+  --secondary-50: #5cb2c4;
+}
+
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
