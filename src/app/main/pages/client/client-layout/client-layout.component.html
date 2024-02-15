@@ -1,6 +1,9 @@
 <div class="container">
   <app-sidebar [links]="links" />
   <div class="main-layout">
-    <router-outlet />
+    <app-header />
+    <div class="main-content">
+      <router-outlet />
+    </div>
   </div>
 </div>

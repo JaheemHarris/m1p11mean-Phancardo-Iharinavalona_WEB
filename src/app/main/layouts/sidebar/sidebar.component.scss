@@ -1,5 +1,5 @@
 :host {
-  width: 15%;
+  width: 20%;
 }
 .sidebar {
   display: flex;
@@ -9,11 +9,12 @@
   background: var(--neutral-00);
   box-sizing: border-box;
   padding: 16px 24px;
-  gap: 48px;
-  box-shadow: 0px 0px 4px 0px;
+  gap: 32px;
+  box-shadow: 0px 0px 4px 0px #00000040;
 
   .sidebar-title {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -23,6 +24,12 @@
     .title {
       font-size: 27px;
       font-weight: 800;
+      color: var(--secondary-50);
+    }
+
+    .slogan {
+      font-size: 12px;
+      font-weight: 500;
     }
   }
 
@@ -34,12 +41,12 @@
     border-radius: 16px;
 
     .items {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding: 8px ;
-        gap: 6px;
-        box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 8px;
+      gap: 6px;
+      box-sizing: border-box;
 
       .menu-item {
         padding: 6px 12px;
@@ -49,8 +56,8 @@
         color: var(--neutral-00);
 
         &:hover {
-            cursor: pointer;
-            background: var(--secondary-50);
+          cursor: pointer;
+          background: var(--secondary-50);
         }
       }
     }

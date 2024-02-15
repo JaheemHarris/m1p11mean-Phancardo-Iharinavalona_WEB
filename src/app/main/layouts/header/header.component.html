@@ -1,0 +1,26 @@
+<div class="header-container">
+  <div class="header">
+    <div class="space">
+      <span class="space-name">Espace client</span>
+    </div>
+    <div class="rightBlock">
+      <div [ngClass]="{ 'header-user-avatar': true, expanded: isExpanded }">
+        <div class="avatar-content" (click)="toggleAccordion()">
+          <ctz-avatar-box />
+          <i
+            class="fa fa-chevron-down"
+            [ngClass]="{ 'rotate-up': isExpanded, 'rotate-down': !isExpanded }"
+          ></i>
+        </div>
+        <div
+          *ngIf="isExpanded"
+          [ngClass]="{ 'avatar-logout': true, expanded: isExpanded }"
+        >
+          <button type="button" class="logout-btn" (click)="logout()">
+            {{ "Se déconneter" }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
