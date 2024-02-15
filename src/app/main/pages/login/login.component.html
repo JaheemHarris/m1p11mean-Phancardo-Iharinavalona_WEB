@@ -1,12 +1,43 @@
-<div>
-  <div>
-    <form>
-      <div>
-        <ctz-input-field type="email" label="Email" name="email" />
-        <ctz-input-field type="password" label="Mot de passe" name="password" />
+<div class="image-container">
+  <div class="slogan-container">
+    <span class="slogan-1">Révélez votre</span>
+    <span class="slogan-2">éclat</span>
+    <span class="slogan-3">intérieur</span>
+  </div>
+</div>
+<div class="container">
+  <div class="login-container">
+    <div class="title">
+      <span class="logo">
+        <img
+          ngSrc="/assets/images/glamify-logo.png"
+          alt="Glamify Logo"
+          width="128"
+          height="128"
+          priority
+        />
+      </span>
+      <span class="name">Glamify</span>
+      <span class="description">Salon de beauté</span>
+    </div>
+    <form class="login-form">
+      <div class="form-label">
+        <span class="label">Accédez à votre espace</span>
       </div>
-      <div>
-        <ctz-button type="submit" variant="primary" text="Se connecter" />
+      <div class="form-group">
+        <div class="form-inputs">
+          <ctz-input-field type="email" label="Email" name="email" />
+          <ctz-input-field
+            type="password"
+            label="Mot de passe"
+            name="password"
+          />
+        </div>
+      </div>
+      <div class="action">
+        <div class="submit-btn">
+          <ctz-button type="submit" variant="primary" text="Se connecter" />
+        </div>
       </div>
     </form>
   </div>

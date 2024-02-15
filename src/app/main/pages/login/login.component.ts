@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { InputFieldComponent } from '../../../components/forms/inputs/input-field/input-field.component';
-import { ButtonComponent } from '../../../components/buttons/button/button.component';
+import { NgOptimizedImage } from '@angular/common';
+import { ButtonComponent } from '@/app/components/buttons/button/button.component';
+import { InputFieldComponent } from '@/app/components/forms/inputs/input-field/input-field.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [InputFieldComponent, ButtonComponent],
+  imports: [InputFieldComponent, ButtonComponent, NgOptimizedImage],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
