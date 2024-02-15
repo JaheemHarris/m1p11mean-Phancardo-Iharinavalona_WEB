@@ -13,6 +13,7 @@ import { HeaderComponent } from '../../../layouts/header/header.component';
 })
 export class ClientLayoutComponent {
   links: ILinkType[] = [
+    { label: 'Example', href: 'example' },
     { label: 'Rendez-vous', href: 'appointement' },
     { label: 'Historique', href: 'history' },
     { label: 'Préférences', href: 'preferences' },
