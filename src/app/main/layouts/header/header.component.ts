@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AvatarBoxComponent } from '../../../components/avatar-box/avatar-box.component';
 
 @Component({
@@ -10,6 +10,7 @@ import { AvatarBoxComponent } from '../../../components/avatar-box/avatar-box.co
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  @Input() spaceName!: string; 
   isExpanded: boolean = false;
   avatar: any; // Assuming you have defined the avatar data structure
   translation: any; // Assuming you have defined the translation data structure
