@@ -1,0 +1,34 @@
+<app-container title="Détail Employé">
+  <div class="content">
+    <div class="header">
+      <h3 class="title">Informations sur l'employé</h3>
+      <div class="back-btn">
+        <ctz-button
+          variant="primary"
+          (onClick)="onGoBack()"
+          text="Retour vers la liste"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="info-content">
+        <div class="info-field">
+          <span class="field-name">Prénom</span>
+          <span class="field-value">Jaheem</span>
+        </div>
+        <div class="info-field">
+          <span class="field-name">Nom</span>
+          <span class="field-value">Harris</span>
+        </div>
+        <div class="info-field">
+          <span class="field-name">Adresse email</span>
+          <span class="field-value">{{ "jaheemharris@gmail.com" }}</span>
+        </div>
+        <div class="info-field">
+          <span class="field-name">Date d'entrée</span>
+          <span class="field-value">{{ "19 Février 2024" }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-container>
