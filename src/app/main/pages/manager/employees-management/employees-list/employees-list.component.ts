@@ -5,9 +5,10 @@ import {
   MatPaginatorModule,
 } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { IEmployee } from '@/lib/types/employeeType';
 import { Router } from '@angular/router';
+import { EmployeeService } from '@/app/lib/services/employee/employee.service';
 
 @Component({
   selector: 'app-employees-list',
@@ -16,7 +17,7 @@ import { Router } from '@angular/router';
   templateUrl: './employees-list.component.html',
   styleUrl: './employees-list.component.scss',
 })
-export class EmployeesListComponent implements AfterViewInit {
+export class EmployeesListComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = [
     'firstname',
     'lastname',
@@ -57,9 +58,18 @@ export class EmployeesListComponent implements AfterViewInit {
     },
   ]);
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private employeeService: EmployeeService
+  ) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngOnInit(): void {
+    this.employeeService.getEmployees().subscribe((employees) => {
+      console.log(employees);
+    });
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

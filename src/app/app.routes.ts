@@ -7,6 +7,7 @@ import { ManagerLayoutComponent } from './main/pages/manager/manager-layout/mana
 import { NewEmployeeComponent } from './main/pages/manager/employees-management/new-employee/new-employee.component';
 import { EmployeesListComponent } from './main/pages/manager/employees-management/employees-list/employees-list.component';
 import { EmployeeDetailComponent } from './main/pages/manager/employees-management/employee-detail/employee-detail.component';
+import { EmployeeScheduleComponent } from './main/pages/employee/employee-schedule/employee-schedule.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -20,6 +21,11 @@ export const routes: Routes = [
       { path: 'history', component: LoginComponent },
       { path: 'preferences', component: LoginComponent },
     ],
+  },
+  {
+    path: 'employee',
+    component: EmployeeLayoutComponent,
+    children: [{ path: 'schedule', component: EmployeeScheduleComponent }],
   },
   {
     path: 'manager',

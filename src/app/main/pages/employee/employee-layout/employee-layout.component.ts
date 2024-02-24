@@ -12,11 +12,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './employee-layout.component.scss',
 })
 export class EmployeeLayoutComponent {
-  links: ILinkType[] = [
-    { label: 'Example', href: 'example' },
-    { label: 'Rendez-vous', href: 'appointement' },
-    { label: 'Historique', href: 'history' },
-    { label: 'Préférences', href: 'preferences' },
-    { label: 'Rappel', href: '#' },
-  ];
+  links: ILinkType[] = [{ label: 'Rendez-vous', href: 'schedule' }];
 }
