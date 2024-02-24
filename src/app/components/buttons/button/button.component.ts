@@ -20,6 +20,7 @@ export class ButtonComponent {
   }
 
   click = (): void => {
+    console.log("Click")
     this.onClick.emit();
   };
 }

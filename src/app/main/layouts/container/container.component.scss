@@ -4,14 +4,15 @@
   padding: 0px 24px;
   gap: 14px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .title-container {
-    .title {
-        font-size: 21px;
-        font-weight: 600;
-        color: var(--primary-100);
-    }
+  .title {
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--primary-100);
+  }
 }
 
 .content-section {
