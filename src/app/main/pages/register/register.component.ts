@@ -94,10 +94,12 @@ export class RegisterComponent implements OnInit {
               }, 1500);
             } else if (!result) {
               this.alreadyExists = true;
+              this.spinner.hide();
             }
           },
           error: (error) => {
             this.registerError = true;
+            this.spinner.hide();
             console.log(error);
           },
         });

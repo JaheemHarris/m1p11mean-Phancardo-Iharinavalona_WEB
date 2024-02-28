@@ -71,10 +71,12 @@ export class LoginComponent implements OnInit {
               }, 1500);
             } else if (!result) {
               this.accountInexsitant = true;
+              this.spinner.hide();
             }
           },
           error: (error) => {
             this.loginError = true;
+            this.spinner.hide();
             console.error(error);
           },
         });
