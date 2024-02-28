@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ButtonComponent } from '@/app/components/buttons/button/button.component';
 import { InputFieldComponent } from '@/app/components/forms/inputs/input-field/input-field.component';
@@ -29,8 +29,10 @@ import { RouterModule } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  accountInexsitant: boolean = false;
+  loginError: boolean = false;
 
   constructor(
     private builder: FormBuilder,
@@ -56,15 +58,22 @@ export class LoginComponent {
           email: this.loginForm.value.email,
           password: this.loginForm.value.password,
         };
-        this.authService
-          .login(credentials)
-          .subscribe(({ status, success, result }) => {
+        this.authService.login(credentials).subscribe({
+          next: ({ status, success, result }) => {
             if (status === 200 && success && result) {
               this.router.navigate([`/client/example`]);
+            } else if (!result) {
+              this.accountInexsitant = true;
             }
-          });
+          },
+          error: (error) => {
+            this.loginError = true;
+            console.error(error);
+          },
+        });
       } catch (error) {
-        console.log(error);
+        this.loginError = true;
+        console.error(error);
       }
     } else {
     }

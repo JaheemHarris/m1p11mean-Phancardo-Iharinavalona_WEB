@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ButtonComponent } from '@/app/components/buttons/button/button.component';
 import { InputFieldComponent } from '@/app/components/forms/inputs/input-field/input-field.component';
@@ -29,8 +29,10 @@ import { RouterModule } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+  alreadyExists: boolean = false;
+  registerError: boolean = false;
 
   constructor(
     private builder: FormBuilder,
@@ -76,14 +78,21 @@ export class RegisterComponent {
           email: this.registerForm.value.email,
           password: this.registerForm.value.password,
         };
-        this.authService
-          .register(payload)
-          .subscribe(({ status, success, result }) => {
+        this.authService.register(payload).subscribe({
+          next: ({ status, success, result }) => {
             if (status === 201 && success && result) {
               this.router.navigate([`/login`]);
+            } else if (!result) {
+              this.alreadyExists = true;
             }
-          });
+          },
+          error: (error) => {
+            this.registerError = true;
+            console.log(error);
+          },
+        });
       } catch (error) {
+        this.registerError = true;
         console.log(error);
       }
     } else {

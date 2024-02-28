@@ -24,6 +24,16 @@
       <div class="form-label">
         <span class="label">Inscrivez-vous pour profiter de nos services</span>
       </div>
+      <div class="form-label" *ngIf="alreadyExists">
+        <span class="register-error"
+          >L'adresse email est déja liée à un compte!</span
+        >
+      </div>
+      <div class="form-label" *ngIf="registerError">
+        <span class="register-error"
+          >Erreur lors de la création du compte!</span
+        >
+      </div>
       <div class="form-group">
         <div class="form-inputs">
           <mat-form-field class="form-field" [floatLabel]="'auto'">
