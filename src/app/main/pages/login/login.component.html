@@ -24,6 +24,14 @@
       <div class="form-label">
         <span class="label">Accédez à votre espace</span>
       </div>
+      <div class="form-label" *ngIf="accountInexsitant">
+        <span class="login-error"
+          >Il n'existe auncun compte ayant ces identifiants!</span
+        >
+      </div>
+      <div class="form-label" *ngIf="loginError">
+        <span class="login-error">Erreur lors de la connexion!</span>
+      </div>
       <div class="form-group">
         <div class="form-inputs">
           <mat-form-field>
@@ -74,3 +82,4 @@
     </div>
   </div>
 </div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

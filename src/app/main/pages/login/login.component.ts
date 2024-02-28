@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ButtonComponent } from '@/app/components/buttons/button/button.component';
 import { InputFieldComponent } from '@/app/components/forms/inputs/input-field/input-field.component';
@@ -11,6 +11,7 @@ import { AuthService } from '@/app/lib/services/auth/auth.service';
 import { ICredentials } from '@/lib/types/authType';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -25,17 +26,21 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     CommonModule,
     RouterModule,
+    NgxSpinnerModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  accountInexsitant: boolean = false;
+  loginError: boolean = false;
 
   constructor(
     private builder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -52,19 +57,30 @@ export class LoginComponent {
   onSubmit = () => {
     if (this.loginForm.valid) {
       try {
+        this.spinner.show();
         const credentials: ICredentials = {
           email: this.loginForm.value.email,
           password: this.loginForm.value.password,
         };
-        this.authService
-          .login(credentials)
-          .subscribe(({ status, success, result }) => {
+        this.authService.login(credentials).subscribe({
+          next: ({ status, success, result }) => {
             if (status === 200 && success && result) {
-              this.router.navigate([`/client/example`]);
+              setTimeout(() => {
+                this.router.navigate([`/client/example`]);
+                this.spinner.hide();
+              }, 1500);
+            } else if (!result) {
+              this.accountInexsitant = true;
             }
-          });
+          },
+          error: (error) => {
+            this.loginError = true;
+            console.error(error);
+          },
+        });
       } catch (error) {
-        console.log(error);
+        this.loginError = true;
+        console.error(error);
       }
     } else {
     }

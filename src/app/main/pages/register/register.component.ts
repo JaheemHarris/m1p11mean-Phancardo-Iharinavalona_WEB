@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ButtonComponent } from '@/app/components/buttons/button/button.component';
 import { InputFieldComponent } from '@/app/components/forms/inputs/input-field/input-field.component';
@@ -11,6 +11,8 @@ import { AuthService } from '@/app/lib/services/auth/auth.service';
 import { IRegisterPayload } from '@/lib/types/authType';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -25,17 +27,21 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     CommonModule,
     RouterModule,
+    NgxSpinnerModule,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+  alreadyExists: boolean = false;
+  registerError: boolean = false;
 
   constructor(
     private builder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -76,14 +82,27 @@ export class RegisterComponent {
           email: this.registerForm.value.email,
           password: this.registerForm.value.password,
         };
-        this.authService
-          .register(payload)
-          .subscribe(({ status, success, result }) => {
+        this.spinner.show();
+        this.authService.register(payload).subscribe({
+          next: ({ status, success, result }) => {
             if (status === 201 && success && result) {
               this.router.navigate([`/login`]);
+              this.spinner.hide();
+              setTimeout(() => {
+                this.spinner.hide();
+                this.router.navigate([`/login`]);
+              }, 1500);
+            } else if (!result) {
+              this.alreadyExists = true;
             }
-          });
+          },
+          error: (error) => {
+            this.registerError = true;
+            console.log(error);
+          },
+        });
       } catch (error) {
+        this.registerError = true;
         console.log(error);
       }
     } else {
