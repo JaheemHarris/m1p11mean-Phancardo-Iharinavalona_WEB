@@ -94,7 +94,7 @@
           font-weight: 700;
         }
 
-        .login-error {
+        .register-error {
           width: 80%;
           color: #cc3300;
         }
@@ -102,15 +102,20 @@
 
       .form-group {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
 
         .form-inputs {
           display: flex;
-          flex-direction: column;
+          justify-content: space-between;
           width: 80%;
           gap: 14px;
           box-sizing: border-box;
+
+          .form-field {
+            width: 100%;
+          }
         }
       }
 

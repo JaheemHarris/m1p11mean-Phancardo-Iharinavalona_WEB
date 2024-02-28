@@ -11,10 +11,12 @@ import { EmployeeEditComponent } from './main/pages/manager/employees-management
 import { EmployeesListComponent } from './main/pages/manager/employees-management/employees-list/employees-list.component';
 import { EmployeeDetailComponent } from './main/pages/manager/employees-management/employee-detail/employee-detail.component';
 import { EmployeeScheduleComponent } from './main/pages/employee/employee-schedule/employee-schedule.component';
+import { RegisterComponent } from './main/pages/register/register.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   {
     path: 'client',
     component: ClientLayoutComponent,
