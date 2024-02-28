@@ -41,3 +41,42 @@
     }
   }
 }
+
+.btn {
+  position: relative;
+}
+
+.loader {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -6px;
+  margin-left: -6px;
+  z-index: 1;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.btn.loading {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn.loading .loader {
+  display: block;
+}
+
+.btn.loading span:first-child {
+  visibility: hidden;
+}
+

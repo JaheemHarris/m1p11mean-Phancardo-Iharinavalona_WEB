@@ -58,6 +58,8 @@ export class EmployeesListComponent implements AfterViewInit, OnInit {
     },
   ]);
 
+  employee = new MatTableDataSource<IEmployee>([])
+
   constructor(
     private router: Router,
     private employeeService: EmployeeService
@@ -66,26 +68,36 @@ export class EmployeesListComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit(): void {
+    
     this.employeeService.getEmployees().subscribe((employees) => {
-      console.log(employees);
+      this.employee = employees
     });
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.paginator._intl = new MatPaginatorIntl();
-    this.dataSource.paginator._intl.itemsPerPageLabel = `Nombre d'éléments par page`;
+    this.employee.paginator = this.paginator;
+    this.employee.paginator._intl = new MatPaginatorIntl();
+    this.employee.paginator._intl.itemsPerPageLabel = `Nombre d'éléments par page`;
   }
 
-  onView = (_id: number): void => {
+  onView = (_id: string): void => {
     this.router.navigate([
       `/manager/employees-management/employee-detail/${_id}`,
     ]);
   };
 
-  onDelete = (_id: number): void => {
+  onEdit = (_id: number): void => {
     this.router.navigate([
-      `/manager/employees-management/employee-detail/${_id}`,
+      `/manager/employees-management/employee-edit/${_id}`,
     ]);
+  };
+  
+
+  onDelete = (_id: String): void => {
+    this.employeeService.deleteEmployee(_id).subscribe(() => {
+      this.employeeService.getEmployees().subscribe((employees) => {
+        this.employee = employees
+      });
+    });
   };
 }

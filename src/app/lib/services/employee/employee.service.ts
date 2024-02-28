@@ -9,4 +9,23 @@ export class EmployeeService extends BaseService {
   getEmployees = (): Observable<any> => {
     return this.getRequest<any>(`employees`);
   };
+
+  getEmployeeById(idEmploye: any): Observable<any> {
+    return this.getByIdRequest<any>('employees/'+idEmploye);
+  }
+  addEmployee(nouveauEmployee: any): Observable<any> {
+    return this.postRequest<any>('employees', nouveauEmployee);
+  }
+
+  editEmployee(employee: any): Observable<any> {
+    return this.editRequest<any>('employees', employee);
+  }
+
+  editPatchEmployee(employee: any): Observable<any> {
+    return this.editPatchRequest<any>('employees', employee);
+  }
+
+  deleteEmployee(idEmploye: any): Observable<any> {
+    return this.deleteRequest<any>('employees/'+idEmploye);
+  }
 }
