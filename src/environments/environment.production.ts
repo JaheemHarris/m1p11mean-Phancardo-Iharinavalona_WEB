@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3000',
+  apiUrl: 'https://m1p11mean-phancardo-iharinavalona-api.onrender.com',
 };
