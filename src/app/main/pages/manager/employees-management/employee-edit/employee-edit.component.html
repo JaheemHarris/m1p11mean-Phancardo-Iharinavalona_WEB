@@ -1,0 +1,36 @@
+<app-container title="Nouvel employé">
+    <div class="content">
+      <h3 class="title">Modification employé</h3>
+      <div class="container">
+        <p>(*) Champ Obligatoire</p>
+        <form class="form-container" (ngSubmit)="onSubmit()">
+          <div class="form-inputs">
+            <mat-form-field>
+              <mat-label>Nom</mat-label>
+              <input matInput [(ngModel)]="lastname" type="text" label="Nom *" name="lastname" required>
+              <mat-error>Le nom d'employé est requis</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Prénom</mat-label>
+              <input matInput [(ngModel)]="firstname" type="text" label="Prénom *" name="firstname" required>
+            <mat-error>Le prénom d'employé est requis</mat-error>
+          </mat-form-field>
+            <mat-form-field>
+              <mat-label>Adresse Email</mat-label>
+              <input matInput [(ngModel)] = "email" type="email" label="Adresse email *" name="email" required>
+            <mat-error>Le prénom d'employé est requis</mat-error>
+          </mat-form-field>
+          </div>
+          <div class="action">
+            <div class="action-btn">
+              <ctz-button type="reset" variant="neutral" text="Annuler" />
+            </div>
+            <div class="action-btn">
+              <ctz-button type="submit" (click)="onSubmit()" variant="primary" text="Enregistrer" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </app-container>
+  

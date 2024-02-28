@@ -5,6 +5,9 @@ import { ExampleComponent } from './main/pages/example/example.component';
 import { EmployeeLayoutComponent } from './main/pages/employee/employee-layout/employee-layout.component';
 import { ManagerLayoutComponent } from './main/pages/manager/manager-layout/manager-layout.component';
 import { NewEmployeeComponent } from './main/pages/manager/employees-management/new-employee/new-employee.component';
+
+import { EmployeeEditComponent } from './main/pages/manager/employees-management/employee-edit/employee-edit.component';
+
 import { EmployeesListComponent } from './main/pages/manager/employees-management/employees-list/employees-list.component';
 import { EmployeeDetailComponent } from './main/pages/manager/employees-management/employee-detail/employee-detail.component';
 import { EmployeeScheduleComponent } from './main/pages/employee/employee-schedule/employee-schedule.component';
@@ -43,6 +46,14 @@ export const routes: Routes = [
         path: 'employees-management/new-employee',
         component: NewEmployeeComponent,
       },
+      {
+        path: 'employees-management/employee-edit/:id',
+        component: EmployeeEditComponent,
+      },
+      // {
+      //   path: 'employees-management/employee-update/:id',
+      //   component: EmployeeEditComponent,
+      // },
     ],
   },
 ];
