@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthService } from '@/app/lib/services/auth/auth.service';
 import { ICredentials } from '@/lib/types/authType';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ import { Router } from '@angular/router';
     MatButtonModule,
     MatInputModule,
     CommonModule,
+    RouterModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
