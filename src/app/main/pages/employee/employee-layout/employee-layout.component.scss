@@ -19,5 +19,16 @@
       width: 100%;
       overflow-y: auto;
     }
+
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10%;
+
+      .footer-copyright {
+        color: var(--primary-100);
+      }
+    }
   }
 }
