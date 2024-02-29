@@ -72,12 +72,10 @@ export class NewEmployeeComponent implements OnInit {
         this.employeeService.saveEmployee(payload).subscribe({
           next: ({ status, success, result }) => {
             if (status === 201 && success && result) {
-              setTimeout(() => {
-                this.spinner.hide();
-                this.router.navigate([
-                  'manager/employees-management/employees-list',
-                ]);
-              }, 1500);
+              this.spinner.hide();
+              this.router.navigate([
+                'manager/employees-management/employees-list',
+              ]);
             } else if (!result) {
               this.alreadyExists = true;
               this.spinner.hide();
