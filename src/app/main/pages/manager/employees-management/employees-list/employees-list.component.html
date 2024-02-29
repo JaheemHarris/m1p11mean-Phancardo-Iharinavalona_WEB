@@ -2,16 +2,16 @@
   <h3 class="title">Liste des employés actifs</h3>
   <div class="container">
     <div class="mat-elevation-z0">
-      <table mat-table [dataSource]="employee">
+      <table mat-table [dataSource]="employees">
         <!-- Firstname Column -->
         <ng-container matColumnDef="firstname">
-          <th mat-header-cell *matHeaderCellDef>Firstname</th>
+          <th mat-header-cell *matHeaderCellDef>Prénom</th>
           <td mat-cell *matCellDef="let element">{{ element.firstname }}</td>
         </ng-container>
 
         <!-- Lastname Column -->
         <ng-container matColumnDef="lastname">
-          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <th mat-header-cell *matHeaderCellDef>Nom</th>
           <td mat-cell *matCellDef="let element">{{ element.lastname }}</td>
         </ng-container>
 
@@ -24,8 +24,8 @@
         <ng-container matColumnDef="view">
           <th mat-header-cell *matHeaderCellDef>Voir</th>
           <td mat-cell *matCellDef="let element">
-            <button (click)="onView(element._id)">
-              Voir {{ element.firstname }}
+            <button mat-raised-button (click)="onView(element._id)">
+              Détail
             </button>
           </td>
         </ng-container>
@@ -33,8 +33,12 @@
         <ng-container matColumnDef="edit">
           <th mat-header-cell *matHeaderCellDef>Modifier</th>
           <td mat-cell *matCellDef="let element">
-            <button (click)="onEdit(element._id)">
-              Modifier {{ element.firstname }}
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="onEdit(element._id)"
+            >
+              Modifier
             </button>
           </td>
         </ng-container>
@@ -42,7 +46,13 @@
         <ng-container matColumnDef="delete">
           <th mat-header-cell *matHeaderCellDef>Supprimer</th>
           <td mat-cell *matCellDef="let element">
-            <button (click)="onDelete(element._id)">Delete</button>
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="onDelete(element._id)"
+            >
+              Delete
+            </button>
           </td>
         </ng-container>
 
@@ -59,3 +69,4 @@
     </div>
   </div>
 </app-container>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

@@ -1,20 +1,26 @@
 import { Observable } from 'rxjs';
 import { BaseService } from '../base/base.service';
 import { Injectable } from '@angular/core';
+import { IEmployee, IEmployeePayload } from '@/lib/types/employeeType';
+import { ApiResponse } from '@/lib/types/apiType';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService extends BaseService {
-  getEmployees = (): Observable<any> => {
-    return this.getRequest<any>(`employees`);
+  getActivatedEmployees = (): Observable<ApiResponse<IEmployee[]>> => {
+    return this.getRequest<ApiResponse<IEmployee[]>>(`employees/activated`);
   };
 
-  getEmployeeById(idEmploye: any): Observable<any> {
-    return this.getByIdRequest<any>('employees/'+idEmploye);
+  getEmployeeById(employeeID: string): Observable<ApiResponse<IEmployee>> {
+    return this.getRequest<ApiResponse<IEmployee>>(`employees/${employeeID}`);
   }
-  addEmployee(nouveauEmployee: any): Observable<any> {
-    return this.postRequest<any>('employees', nouveauEmployee);
+
+  saveEmployee(payload: IEmployeePayload): Observable<ApiResponse<IEmployee>> {
+    return this.postRequest<IEmployeePayload, ApiResponse<IEmployee>>(
+      'employees',
+      payload
+    );
   }
 
   editEmployee(employee: any): Observable<any> {
@@ -25,7 +31,9 @@ export class EmployeeService extends BaseService {
     return this.editPatchRequest<any>('employees', employee);
   }
 
-  deleteEmployee(idEmploye: any): Observable<any> {
-    return this.deleteRequest<any>('employees/'+idEmploye);
+  deleteEmployee(employeeID: string): Observable<ApiResponse<IEmployee>> {
+    return this.deleteRequest<ApiResponse<IEmployee>>(
+      `employees/${employeeID}`
+    );
   }
 }

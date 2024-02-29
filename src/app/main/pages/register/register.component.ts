@@ -86,8 +86,6 @@ export class RegisterComponent implements OnInit {
         this.authService.register(payload).subscribe({
           next: ({ status, success, result }) => {
             if (status === 201 && success && result) {
-              this.router.navigate([`/login`]);
-              this.spinner.hide();
               setTimeout(() => {
                 this.spinner.hide();
                 this.router.navigate([`/login`]);

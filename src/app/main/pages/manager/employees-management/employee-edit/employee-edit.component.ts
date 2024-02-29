@@ -32,7 +32,7 @@ export class EmployeeEditComponent {
   ngOnInit(): void {
     
     
-    this.employeeService.getEmployees().subscribe((employees) => {
+    this.employeeService.getActivatedEmployees().subscribe((employees) => {
       this.employee = employees
     });
   }

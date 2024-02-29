@@ -4,3 +4,9 @@ export interface IEmployee {
   firstname: string;
   email: string;
 }
+
+export interface IEmployeePayload {
+  lastname: string;
+  firstname: string;
+  email: string;
+}
