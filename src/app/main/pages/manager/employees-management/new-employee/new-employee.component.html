@@ -8,11 +8,53 @@
         l'application et lui sera envoyé par mail.
       </p>
       <p>(*) Champ Obligatoire</p>
-      <form class="form-container">
+      <form
+        class="form-container"
+        [formGroup]="registerForm"
+        (ngSubmit)="onSubmit()"
+      >
         <div class="form-inputs">
-          <ctz-input-field type="text" label="Nom *" name="lastname" />
-          <ctz-input-field type="text" label="Prénom *" name="firstname" />
-          <ctz-input-field type="email" label="Adresse email *" name="email" />
+          <mat-form-field class="form-field" [floatLabel]="'auto'">
+            <mat-label>Nom</mat-label>
+            <input matInput type="text" formControlName="lastname" />
+            @if(registerForm.get('lastname')?.invalid &&
+            registerForm.get('lastname')?.touched) {
+            <mat-error>
+              <span *ngIf="registerForm.get('lastname')?.errors?.['required']"
+                >Veuillez saisir votre nom!</span
+              >
+            </mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field class="form-field" [floatLabel]="'auto'">
+            <mat-label>Prénom</mat-label>
+            <input matInput type="text" formControlName="firstname" />
+            @if(registerForm.get('firstname')?.invalid &&
+            registerForm.get('firstname')?.touched) {
+            <mat-error>Veuillez votre prénom! </mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field class="form-field" [floatLabel]="'auto'">
+            <mat-label>Adresse email</mat-label>
+            <input
+              matInput
+              type="email"
+              formControlName="email"
+              placeholder="Email"
+            />
+            @if(registerForm.get('email')?.invalid &&
+            registerForm.get('email')?.touched) {
+            <mat-error>
+              <span *ngIf="registerForm.get('email')?.errors?.['required']"
+                >Veuillez saisir une adresse email!</span
+              >
+              <span *ngIf="registerForm.get('email')?.errors?.['email']"
+                >L'adresse email n'est pas valide!</span
+              >
+            </mat-error>
+            }
+          </mat-form-field>
         </div>
         <div class="action">
           <div class="action-btn">
@@ -26,3 +68,4 @@
     </div>
   </div>
 </app-container>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
