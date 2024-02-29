@@ -18,5 +18,16 @@
       flex-grow: 1;
       width: 100%;
     }
+
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10%;
+
+      .footer-copyright {
+        color: var(--primary-100);
+      }
+    }
   }
 }
