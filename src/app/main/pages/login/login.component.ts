@@ -45,6 +45,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildLoginForm();
+    this.loginForm.setValue({
+      email: 'namtetsuya@gmail.com',
+      password: 'eSN7smhw',
+    });
   }
 
   buildLoginForm = () => {
@@ -65,10 +69,8 @@ export class LoginComponent implements OnInit {
         this.authService.login(credentials).subscribe({
           next: ({ status, success, result }) => {
             if (status === 200 && success && result) {
-              setTimeout(() => {
-                this.router.navigate([`/client/example`]);
-                this.spinner.hide();
-              }, 1500);
+              this.spinner.hide();
+              this.router.navigate([`/client/example`]);
             } else if (!result) {
               this.accountInexsitant = true;
               this.spinner.hide();

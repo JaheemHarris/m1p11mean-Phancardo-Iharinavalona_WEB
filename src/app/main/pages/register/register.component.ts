@@ -86,10 +86,8 @@ export class RegisterComponent implements OnInit {
         this.authService.register(payload).subscribe({
           next: ({ status, success, result }) => {
             if (status === 201 && success && result) {
-              setTimeout(() => {
-                this.spinner.hide();
-                this.router.navigate([`/login`]);
-              }, 1500);
+              this.spinner.hide();
+              this.router.navigate([`/login`]);
             } else if (!result) {
               this.alreadyExists = true;
               this.spinner.hide();
